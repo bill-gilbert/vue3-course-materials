@@ -1,5 +1,5 @@
 <template>
-  <page-meetups />
+  <PageMeetups />
 </template>
 
 <script>

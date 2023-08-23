@@ -11,9 +11,9 @@ export default defineComponent({
   },
 
   template: `
-    <toaster-provider>
+    <ToasterProvider>
       <div class="container">
-        <index-page />
+        <IndexPage />
       </div>
-    </toaster-provider>`,
+    </ToasterProvider>`,
 });

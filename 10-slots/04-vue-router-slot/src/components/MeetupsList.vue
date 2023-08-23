@@ -1,25 +1,25 @@
 <template>
   <ul class="meetups-list">
     <li v-for="meetup in meetups" :key="meetup.id" class="meetups-list__item">
-      <router-link
+      <RouterLink
         :to="{ name: 'meetup', params: { meetupId: meetup.id } }"
         class="meetups-list__item-link"
         tabindex="0"
       >
-        <meetups-list-item :meetup="meetup" />
-      </router-link>
+        <MeetupCard :meetup="meetup" />
+      </RouterLink>
     </li>
   </ul>
 </template>
 
 <script>
-import MeetupsListItem from './MeetupsListItem.vue';
+import MeetupCard from './MeetupCard.vue';
 
 export default {
   name: 'MeetupsList',
 
   components: {
-    MeetupsListItem,
+    MeetupCard,
   },
 
   props: {

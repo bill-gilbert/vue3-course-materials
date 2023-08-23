@@ -1,7 +1,7 @@
 import { computed } from '../vendor/vue.esm-browser.js';
 
 export function useModelProxy(modelValue, emit) {
-  const modelProxy = computed({
+  return computed({
     get() {
       return modelValue.value;
     },
@@ -10,5 +10,4 @@ export function useModelProxy(modelValue, emit) {
       emit('update:modelValue', value);
     },
   });
-  return { modelProxy };
 }

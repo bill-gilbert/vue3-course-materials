@@ -11,8 +11,8 @@ export default defineComponent({
       this.$refs['localToaster'].toast('Toast');
     },
 
-    rootToast() {
-      this.$root.toast('Root Toast');
+    globalToast() {
+      this.$root.toast('Global Toast');
     },
   },
 
@@ -24,8 +24,8 @@ export default defineComponent({
         width: 500px;
         height: 500px;"
     >
-      <the-toaster ref="localToaster" />
+      <TheToaster ref="localToaster" />
       <button @click="localToast">Local Toast</button>
-      <button @click="rootToast">Root Toast</button>
+      <button @click="globalToast">Global Toast</button>
     </div>`,
 });

@@ -62,9 +62,9 @@ const App = defineComponent({
 
 
       <main class="main container">
-        <page-a v-if="currentPath === '/A'" />
-        <page-b v-else-if="currentPath === '/B'" />
-        <page-c v-else-if="currentPath === '/C'" />
+        <PageA v-if="currentPath === '/A'" />
+        <PageB v-else-if="currentPath === '/B'" />
+        <PageC v-else-if="currentPath === '/C'" />
         <div v-else>404 - Not Found</div>
       </main>
     </div>

@@ -1,27 +1,29 @@
 <template>
-  <ui-container style="padding-top: 48px">
-    <ui-input ref="firstNameInput" v-model="value" type="text" name="firstName" placeholder="Cat" @blur="handleBlur">
+  <UiContainer style="padding-top: 48px">
+    <UiInput v-model="value" type="text" name="firstName" placeholder="Cat" @blur="handleBlur">
       <template v-if="showIcon" #left-icon>
-        <ui-icon icon="search" />
+        <UiIcon icon="search" />
       </template>
-    </ui-input>
+    </UiInput>
 
-    <ui-input-number v-model="age" name="age" @blur="handleBlur">
+    <UiInputNumber ref="ageInput" v-model="age" name="age" @blur="handleBlur">
       <template v-if="showIcon" #left-icon>
-        <ui-icon icon="search" />
+        <UiIcon icon="search" />
       </template>
-    </ui-input-number>
+    </UiInputNumber>
 
-    <button @click="toggleIcon">Toggle Icon</button>
-    <button @click="focus">Focus</button>
+    <label>
+      <input v-model="showIcon" type="checkbox" /> showIcon
+    </label>
+    <button @click="focus">Set Focus</button>
     <hr />
     <p>FirstName: {{ value }}</p>
     <p>Age: {{ age }}</p>
-  </ui-container>
+  </UiContainer>
 </template>
 
 <script>
-import UiInput from './components/UiInput';
+import UiInput from './components/UiInput.vue';
 import UiContainer from './components/UiContainer.vue';
 import UiIcon from './components/UiIcon.vue';
 import UiInputNumber from './components/UiInputNumber.vue';
@@ -45,23 +47,19 @@ export default {
   },
 
   methods: {
-    toggleIcon() {
-      this.showIcon = !this.showIcon;
-    },
-
     handleBlur(event) {
       console.log('Blur', event);
     },
 
     focus() {
-      this.$refs['firstNameInput'].focus();
+      this.$refs.ageInput.focus();
     },
   },
 };
 </script>
 
 <style>
-@import '~@/assets/styles/_fonts.css';
-@import '~@/assets/styles/_variables.css';
-@import '~@/assets/styles/_common.css';
+@import './assets/styles/_fonts.css';
+@import './assets/styles/_variables.css';
+@import './assets/styles/_common.css';
 </style>

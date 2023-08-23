@@ -1,17 +1,20 @@
 <template>
   <header class="header">
-    <meetups-logo />
-    <meetups-nav />
+    <MeetupsLogo />
+    <MeetupsNav />
   </header>
 </template>
 
 <script>
-import MeetupsLogo from './MeetupsLogo';
-import MeetupsNav from './MeetupsNav';
+import MeetupsLogo from './MeetupsLogo.vue';
+import MeetupsNav from './MeetupsNav.vue';
 
 export default {
   name: 'MeetupsHeader',
-  components: { MeetupsNav, MeetupsLogo },
+  components: {
+    MeetupsNav,
+    MeetupsLogo,
+  },
 };
 </script>
 

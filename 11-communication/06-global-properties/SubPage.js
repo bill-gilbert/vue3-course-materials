@@ -18,7 +18,7 @@ export default defineComponent({
 
   template: `
     <div class="sub-page">
-      <the-toaster ref="localToaster" />
+      <TheToaster ref="localToaster" />
       <button @click="localToast">Local Toast</button>
       <button @click="globalToast">Global Toast</button>
     </div>`,

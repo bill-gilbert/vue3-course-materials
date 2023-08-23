@@ -1,9 +1,9 @@
 <template>
-  <list-view v-slot="{ item, index, onRemove }" v-model:items="list">
+  <ListView v-slot="{ item, index, onRemove }" v-model:items="list">
     <p>
       <button type="button" @click="onRemove">{{ index }}: {{ item.name }}</button>
     </p>
-  </list-view>
+  </ListView>
 </template>
 
 <script>

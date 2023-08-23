@@ -25,8 +25,8 @@ export default defineComponent({
 
   template: `
     <div class="container">
-      <index-page />
+      <IndexPage />
     </div>
-    <the-toaster ref="toaster" />
+    <TheToaster ref="toaster" />
   `,
 });

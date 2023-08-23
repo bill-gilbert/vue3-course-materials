@@ -1,7 +1,7 @@
 <template>
   <header class="header">
-    <meetups-logo />
-    <meetups-nav />
+    <MeetupsLogo />
+    <MeetupsNav />
   </header>
 </template>
 

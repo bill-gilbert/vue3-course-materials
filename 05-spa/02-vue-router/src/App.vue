@@ -1,16 +1,16 @@
 <template>
   <div class="wrapper">
-    <meetups-header />
+    <MeetupsHeader />
     <main class="main">
-      <router-view />
+      <RouterView />
     </main>
-    <meetups-footer />
+    <MeetupsFooter />
   </div>
 </template>
 
 <script>
-import MeetupsHeader from './components/MeetupsHeader';
-import MeetupsFooter from './components/MeetupsFooter';
+import MeetupsHeader from './components/MeetupsHeader.vue';
+import MeetupsFooter from './components/MeetupsFooter.vue';
 
 export default {
   name: 'App',

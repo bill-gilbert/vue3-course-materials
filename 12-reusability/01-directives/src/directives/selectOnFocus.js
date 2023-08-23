@@ -1,25 +1,36 @@
+// Храним обработчики событий узлов, на которые установлена директива для их дальнейшего удаления
+const handlers = new Map();
+
+// Пользовательская директива описывается объектом с хуками
 export const selectOnFocus = {
-  // created() {},
+  // Вызывается, когда DOM элемент с директивой создан, но пустой. Без установки остальных его свойств или обработчиков событий
+  created() {},
 
-  // beforeMount() {},
+  // Вызывается перед тем, как узел с директивой монтируется в DOM
+  beforeMount() {},
 
+  // Вызывается, когда узел с директивой монтируется в DOM
   mounted(el, { instance, value, oldValue, arg, modifiers, dir }, vnode, oldVNode) {
     const [start, end] = value ?? [0, -1];
 
-    // Обработчик события требуется где-то хранить. Удобно в самом дом узле.
-    el._selectOnFocusHandler = ($event) => {
+    const handler = ($event) => {
       $event.currentTarget.setSelectionRange(start, end);
     };
-
-    el.addEventListener('focus', el._selectOnFocusHandler);
+    // В директивах
+    el.addEventListener('focus', handler);
+    handlers.set(el, handler);
   },
 
-  // beforeUpdate() {},
+  // Вызывается перед тем, как компонент, в котором рендерится узел, обновится
+  beforeUpdate() {},
 
-  // updated() {},
+  // Вызывается после того, как компонент, в котором рендерится узел, обновился
+  updated() {},
 
-  // Вручную установленные обработчики событий удаляем самостоятельно
+  // Вызывается перед удалением узла с директивой в DOM
   unmounted(el) {
-    el.removeEventListener('focus', el._selectOnFocusHandler);
+    // Вручную установленные обработчики событий удаляем самостоятельно
+    el.removeEventListener('focus', handlers.get(el));
+    handlers.delete(el);
   },
 };

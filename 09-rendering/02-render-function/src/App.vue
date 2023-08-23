@@ -1,12 +1,3 @@
-<!--<template>
-  <FieldsetComponent>
-    <template #legend>Example</template>
-
-    <TextDiv />
-    <CounterButton v-model:count="count" />
-  </FieldsetComponent>
-</template>-->
-
 <script>
 import { h } from 'vue';
 import FieldsetComponent from './FieldsetComponent.vue';
@@ -16,11 +7,7 @@ import CounterButton from './CounterButton.vue';
 export default {
   name: 'App',
 
-  // components: {
-  //   CounterButton,
-  //   TextDiv,
-  //   FieldsetComponent,
-  // },
+  // Регистрация компонентов больше не нужна, компоненты используются напрямую в JS
 
   data() {
     return {
@@ -38,7 +25,11 @@ export default {
 
     const content = [h(TextDiv), counterButton];
 
-    return h(FieldsetComponent, null, { legend: () => 'Example', default: () => content });
+    // В компоненты содержимое лучше передать не срендеренным, а функциями рендеринга содержимого слота
+    return h(FieldsetComponent, null, {
+      legend: () => 'Example',
+      default: () => content
+    });
   },
 };
 </script>

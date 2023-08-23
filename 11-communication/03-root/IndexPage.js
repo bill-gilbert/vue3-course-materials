@@ -6,5 +6,5 @@ export default defineComponent({
 
   components: { SubPage },
 
-  template: `<sub-page />`,
+  template: `<SubPage />`,
 });

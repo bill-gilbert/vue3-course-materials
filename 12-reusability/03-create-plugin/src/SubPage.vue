@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { TOASTER_KEY } from './plugins/toaster/toaster.js';
+import { TOASTER_KEY } from './plugins/toaster/index.js';
 
 export default {
   name: 'SubPage',
@@ -17,8 +17,6 @@ export default {
   methods: {
     toast() {
       this.toaster.toast('Toast');
-      // this.$toaster.toast('Toast 2');
-      // this.$toast('Toast 3');
     },
   },
 };

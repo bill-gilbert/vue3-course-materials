@@ -1,19 +1,17 @@
 <template>
   <div class="wrapper">
-    <meetups-header />
+    <MeetupsHeader />
     <main class="main">
-      <router-view v-slot="{ Component }">
-        <template v-if="Component">
-          <keep-alive :max="3">
-            <component :is="Component" />
-          </keep-alive>
-        </template>
-        <ui-container v-else>
-          <ui-alert>Страница загружается...</ui-alert>
-        </ui-container>
-      </router-view>
+      <RouterView v-slot="{ Component }">
+        <KeepAlive v-if="Component" :max="3">
+          <component :is="Component" />
+        </KeepAlive>
+        <UiContainer v-else>
+          <UiAlert>Loading...</UiAlert>
+        </UiContainer>
+      </RouterView>
     </main>
-    <meetups-footer />
+    <MeetupsFooter />
   </div>
 </template>
 

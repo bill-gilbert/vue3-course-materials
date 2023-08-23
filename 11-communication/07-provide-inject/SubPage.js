@@ -30,20 +30,15 @@ export default defineComponent({
       this.$refs['localToaster'].toast('Toast with API ' + this.config.API_URL);
     },
 
-    injectToast() {
+    globalToast() {
       this.toaster.toast('Inject Toast with API ' + this.config.API_URL);
-    },
-
-    injectToastApp() {
-      this.toasterApp.toast('Inject from App Toast with API ' + this.config.API_URL);
     },
   },
 
   template: `
     <div class="sub-page">
-      <the-toaster ref="localToaster" />
+      <TheToaster ref="localToaster" />
       <button @click="localToast">Local Toast</button>
-      <button @click="injectToast">Inject Toast</button>
-      <button @click="injectToastApp">Inject from App Toast</button>
+      <button @click="globalToast">Global Toast</button>
     </div>`,
 });

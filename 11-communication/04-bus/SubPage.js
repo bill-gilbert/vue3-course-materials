@@ -12,8 +12,8 @@ export default defineComponent({
       this.$refs['localToaster'].toast('Toast');
     },
 
-    eventBusToast() {
-      eventBus.emit('toaster:toast', 'Event Bus Toast');
+    globalToast() {
+      eventBus.emit('toaster:toast', 'Global Toast');
     },
   },
 
@@ -25,8 +25,8 @@ export default defineComponent({
         width: 500px;
         height: 500px;"
     >
-      <the-toaster ref="localToaster" />
+      <TheToaster ref="localToaster" />
       <button @click="localToast">Local Toast</button>
-      <button @click="eventBusToast">Event Bus Toast</button>
+      <button @click="globalToast">Global Toast</button>
     </div>`,
 });

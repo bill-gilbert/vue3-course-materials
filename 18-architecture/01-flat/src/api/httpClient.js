@@ -10,7 +10,7 @@ export const httpClient = axios.create({
       408 Request Timeout
       429 Too Many Requests
      */
-    return ![408, 413, 429].includes(status) && status < 500;
+    return ![405, 408, 429].includes(status) && status < 500;
   },
 });
 

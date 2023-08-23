@@ -1,15 +1,18 @@
 <template>
   <footer class="footer">
-    <ui-container> &copy; 2020-{{ new Date().getFullYear() }} </ui-container>
+    <UiContainer>&copy; 2020-{{ new Date().getFullYear() }}</UiContainer>
   </footer>
 </template>
 
 <script>
-import UiContainer from './UiContainer';
+import UiContainer from './UiContainer.vue';
 
 export default {
   name: 'MeetupsFooter',
-  components: { UiContainer },
+
+  components: {
+    UiContainer,
+  },
 };
 </script>
 

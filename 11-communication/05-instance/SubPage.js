@@ -12,15 +12,15 @@ export default defineComponent({
       this.$refs['localToaster'].toast('Toast');
     },
 
-    instanceToast() {
-      toaster.toast('Instance Toast');
+    globalToast() {
+      toaster.toast('Global Toast');
     },
   },
 
   template: `
     <div class="sub-page">
-      <the-toaster ref="localToaster" />
+      <TheToaster ref="localToaster" />
       <button @click="localToast">Local Toast</button>
-      <button @click="instanceToast">Instance Toast</button>
+      <button @click="globalToast">Global Toast</button>
     </div>`,
 });

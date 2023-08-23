@@ -35,9 +35,7 @@ export default {
     },
   },
 
-  emits: {
-    'update:modelValue': null,
-  },
+  emits: ['update:modelValue'],
 };
 </script>
 

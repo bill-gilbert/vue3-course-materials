@@ -1,4 +1,4 @@
-import { defineComponent } from './vendor/vue.esm-browser.js';
+import { defineComponent, toRefs } from './vendor/vue.esm-browser.js';
 import UiInput from './UiInput.js';
 import { useLocalProp } from './composables/useLocalProp.js';
 
@@ -17,7 +17,9 @@ export default defineComponent({
   emits: [`update:user`],
 
   setup(props, { emit }) {
-    const { localProp: localUser } = useLocalProp(props, 'user', emit);
+    const { user } = toRefs(props);
+    const localUser = useLocalProp(user, 'user', emit);
+
     return {
       localUser,
     };
@@ -25,8 +27,8 @@ export default defineComponent({
 
   template: `
     <form>
-      <p>FirstName: <ui-input v-model="localUser.firstName" /></p>
-      <p>LastName: <ui-input v-model="localUser.lastName" /></p>
-      <button>Submit</button>
+      <p>FirstName: <UiInput v-model="localUser.firstName" /></p>
+      <p>LastName: <UiInput v-model="localUser.lastName" /></p>
+      <p><button>Submit</button></p>
     </form>`,
 });

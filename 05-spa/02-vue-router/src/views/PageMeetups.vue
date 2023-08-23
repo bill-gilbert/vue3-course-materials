@@ -1,15 +1,15 @@
 <template>
-  <ui-container>
+  <UiContainer>
     <div class="filters-panel">
       <div class="filters-panel__col">
-        <ui-radio-group v-model="filter.date" :options="$options.dateFilterOptions" name="date" />
+        <UiRadioGroup v-model="filter.date" :options="$options.dateFilterOptions" name="date" />
       </div>
 
       <div class="filters-panel__col">
         <div class="form-group form-group_inline">
           <div class="input-group input-group_icon input-group_icon-left">
             <div class="input-group__icon">
-              <ui-icon icon="search" />
+              <UiIcon icon="search" />
             </div>
 
             <input
@@ -21,20 +21,20 @@
           </div>
         </div>
         <div class="form-group form-group_inline">
-          <ui-button-group v-model:view="view" />
+          <UiButtonGroup v-model:view="view" />
         </div>
       </div>
     </div>
 
     <template v-if="meetups">
       <template v-if="filteredMeetups.length">
-        <meetups-list v-if="view === 'list'" :meetups="filteredMeetups" />
-        <meetups-calendar v-else-if="view === 'calendar'" :meetups="filteredMeetups" />
+        <MeetupsList v-if="view === 'list'" :meetups="filteredMeetups" />
+        <MeetupsCalendar v-else-if="view === 'calendar'" :meetups="filteredMeetups" />
       </template>
-      <ui-alert v-else>Митапов по заданным условиям не найдено...</ui-alert>
+      <UiAlert v-else>Митапов по заданным условиям не найдено...</UiAlert>
     </template>
-    <ui-alert v-else>Загрузка...</ui-alert>
-  </ui-container>
+    <UiAlert v-else>Загрузка...</UiAlert>
+  </UiContainer>
 </template>
 
 <script>
@@ -82,10 +82,6 @@ export default {
 
   computed: {
     filteredMeetups() {
-      if (!this.meetups) {
-        return null;
-      }
-
       const dateFilter = (meetup) =>
         this.filter.date === 'all' ||
         (this.filter.date === 'past' && new Date(meetup.date) <= new Date()) ||
@@ -106,10 +102,8 @@ export default {
     },
   },
 
-  mounted() {
-    fetchMeetups().then((meetups) => {
-      this.meetups = meetups;
-    });
+  async mounted() {
+    this.meetups = await fetchMeetups();
   },
 };
 </script>

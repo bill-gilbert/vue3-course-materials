@@ -1,7 +1,8 @@
 import { formatAsIsoDate, formatAsLocalDate } from '../utils/dateFormatters.js';
 
-// Пример бесполезного composable
-// Эти методы можно импортировать напрямую
+// Пример не-composable
+// Это не composable, это не часть компонента, а просто две JS функции
+// Нет привязки к экземпляру, Vue, реактивности
 export function useDateFormatters() {
   return {
     formatAsLocalDate,

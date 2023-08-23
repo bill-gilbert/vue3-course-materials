@@ -1,8 +1,6 @@
-<!--<template>
-  <div>TextDiv</div>
-</template>-->
+<script>
+import { h } from 'vue';
 
-<script lang="jsx">
 export default {
   name: 'TextDiv',
 

@@ -1,15 +1,15 @@
 <template>
-  <ui-container>
+  <UiContainer>
     <div class="filters-panel">
       <div class="filters-panel__col">
-        <ui-radio-group v-model="filter.date" :options="$options.dateFilterOptions" name="date" />
+        <UiRadioGroup v-model="filter.date" :options="$options.dateFilterOptions" name="date" />
       </div>
 
       <div class="filters-panel__col">
         <div class="form-group form-group_inline">
           <div class="input-group input-group_icon input-group_icon-left">
             <div class="input-group__icon">
-              <ui-icon icon="search" />
+              <UiIcon icon="search" />
             </div>
 
             <input
@@ -21,20 +21,19 @@
           </div>
         </div>
         <div class="form-group form-group_inline">
-          <ui-button-group v-model:view="view" />
+          <UiButtonGroup v-model:view="view" />
         </div>
       </div>
     </div>
 
     <template v-if="meetups">
       <template v-if="filteredMeetups.length">
-        <meetups-list v-if="view === 'list'" :meetups="filteredMeetups" />
-        <meetups-calendar v-else-if="view === 'calendar'" :meetups="filteredMeetups" />
+        <component :is="viewComponent" :meetups="filteredMeetups" />
       </template>
-      <ui-alert v-else>Митапов по заданным условиям не найдено...</ui-alert>
+      <UiAlert v-else>Митапов по заданным условиям не найдено...</UiAlert>
     </template>
-    <ui-alert v-else>Загрузка...</ui-alert>
-  </ui-container>
+    <UiAlert v-else>Загрузка...</UiAlert>
+  </UiContainer>
 </template>
 
 <script>
@@ -45,7 +44,7 @@ import UiButtonGroup from '@/components/UiButtonGroup.vue';
 import UiContainer from '@/components/UiContainer.vue';
 import UiAlert from '@/components/UiAlert.vue';
 import { fetchMeetups } from '@/api';
-import UiIcon from './UiIcon.vue';
+import UiIcon from '@/components/UiIcon.vue';
 
 export default {
   name: 'PageMeetups',
@@ -104,22 +103,18 @@ export default {
 
       return this.meetups.filter((meetup) => dateFilter(meetup) && participationFilter(meetup) && searchFilter(meetup));
     },
-  },
 
-  mounted() {
-    fetchMeetups().then((meetups) => {
-      this.meetups = meetups;
-    });
-  },
-
-  methods: {
-    formatDate(date) {
-      return new Date(date).toLocaleString(navigator.language, {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      });
+    viewComponent() {
+      const viewComponents = {
+        list: MeetupsList,
+        calendar: MeetupsCalendar,
+      };
+      return viewComponents[this.view];
     },
+  },
+
+  async mounted() {
+    this.meetups = await fetchMeetups();
   },
 };
 </script>
