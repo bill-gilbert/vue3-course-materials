@@ -51,6 +51,8 @@
                     value="all"
                     v-model="filter.date"
                   />
+                  <!--                    :checked="filter.date===`all`"-->
+                  <!--                    @change = "filter.date = $event.target.value"-->
                   <label for="radio-buttons_date_all" class="radio-group__label">Все</label>
                 </div>
                 <div class="radio-group__button">
@@ -62,6 +64,8 @@
                     value="past"
                     v-model="filter.date"
                   />
+                  <!--                    :checked="filter.date===`past`"-->
+                  <!--                    @change = "filter.date = $event.target.value"-->
                   <label for="radio-buttons_date_future" class="radio-group__label">Прошедшие</label>
                 </div>
                 <div class="radio-group__button">
@@ -73,6 +77,8 @@
                     value="future"
                     v-model="filter.date"
                   />
+                  <!--                    :checked="filter.date===`future`"-->
+                  <!--                    @change = "filter.date = $event.target.value"-->
                   <label for="radio-buttons_date_past" class="radio-group__label">Ожидаемые</label>
                 </div>
               </div>
